@@ -31,23 +31,24 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+function getNameString(name: string): string {
+  if (!name) {
+    return "Enter Name";
+  }
+  return `Your name is ${name}`;
+}
+
 const App: React.FC = () => {
 
   const classes = useStyles();
   const [name, setName] = useState("");
-  function getNameString() {
-    if (!name) {
-      return "Enter Name";
-    }
-    return `Your name is ${name}`;
-  }
 
   return (
     <div className="App">
       <header className={classes.header}>
         <img src={logo} className={classes.logo} alt="logo" />
         <Typography className={classes.nameInput}>
-          {getNameString()}
+          {getNameString(name)}
         </Typography>
         <TextField onChange={e => {
           setName(e.target.value)
