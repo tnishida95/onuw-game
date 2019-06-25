@@ -9,7 +9,7 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    justifContent: 'center',
+    justifyContent: 'center',
     fontSize: 'calc(10px + 2vmin)',
     color: theme.palette.primary.contrastText,
   },
