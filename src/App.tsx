@@ -2,6 +2,14 @@ import React, { useState } from 'react';
 import logo from './logo.svg';
 import { Typography, TextField, makeStyles } from '@material-ui/core';
 
+// TODO:
+// track this: https://github.com/socketio/engine.io/pull/583
+// uws, a dependency, is deprecated and has an empty version on its current
+// release.  Workaround: npm install uws@10.148.1
+const port = process.env.PORT;
+const io = require('socket.io')();
+io.listen(port);
+
 const useStyles = makeStyles(theme => ({
   header: {
     backgroundColor: theme.palette.primary.main,
@@ -30,6 +38,11 @@ const useStyles = makeStyles(theme => ({
     pointEvents: 'none'
   }
 }));
+
+// client connections come in here...
+io.on('connection', (client: any) => {
+	// ...and the server emits things here
+});
 
 function getNameString(name: string): string {
   if (!name) {
